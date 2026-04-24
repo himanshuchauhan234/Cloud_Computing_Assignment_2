@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Main login container -->
+  <div class="container">
+
+    <!-- Page title -->
+    <h1>Music Subscription Login</h1>
+
+    <!-- Email input field -->
+    <label>Email</label>
+    <input type="email" id="email">
+
+    <!-- Password input field -->
+    <label>Password</label>
+    <input type="password" id="password">
+
+    <!-- Login button triggers login() function -->
+    <button onclick="login()">Login</button>
+
+    <!-- Error message display -->
+    <p id="message" class="error"></p>
+
+    <!-- Link to register page -->
+    <p>
+      Don't have an account?
+      <a href="register.html">Register here</a>
+    </p>
+
+  </div>
+
+  <!-- Load configuration (API URL, mock toggle) -->
+  <script src="config.js"></script>
+
+  <!-- Load authentication logic -->
+  <script src="auth.js"></script>
+</body>
+</html>
