@@ -8,32 +8,46 @@
 </head>
 
 <body>
-  <!-- Registration container -->
+
+  <!-- Main container -->
   <div class="container">
 
+    <!-- App label -->
+    <div class="app-badge">Music Subscription App</div>
+
     <!-- Page title -->
-    <h1>Register</h1>
+    <h1>Create account</h1>
 
-    <!-- Email input -->
-    <label>Email</label>
-    <input type="email" id="email">
+    <!-- Subtitle -->
+    <p class="subtitle">
+      Register to start subscribing to music.
+    </p>
 
-    <!-- Username input -->
-    <label>Username</label>
-    <input type="text" id="username">
+    <!-- FORM (enables Enter key submission) -->
+    <form onsubmit="event.preventDefault(); register();">
 
-    <!-- Password input -->
-    <label>Password</label>
-    <input type="password" id="password">
+      <!-- Email input -->
+      <label>Email</label>
+      <input type="email" id="email" placeholder="Enter your email">
 
-    <!-- Register button -->
-    <button onclick="register()">Register</button>
+      <!-- Username input -->
+      <label>Username</label>
+      <input type="text" id="username" placeholder="Enter your username">
+
+      <!-- Password input -->
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Enter your password">
+
+      <!-- Submit button -->
+      <button type="submit">Register</button>
+
+    </form>
 
     <!-- Error message -->
     <p id="message" class="error"></p>
 
-    <!-- Link back to login -->
-    <p>
+    <!-- Link to login -->
+    <p class="page-link">
       Already have an account?
       <a href="login.html">Login here</a>
     </p>
@@ -43,5 +57,6 @@
   <!-- Scripts -->
   <script src="config.js"></script>
   <script src="auth.js"></script>
+
 </body>
 </html>

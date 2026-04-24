@@ -1,67 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Main Page</title>
-
-  <!-- Link CSS -->
+  <title>Music Subscription App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
-<!-- loadMainPage() runs when page loads -->
 <body onload="loadMainPage()">
 
-  <!-- Main page wrapper -->
   <div class="page">
 
-    <!-- Top navigation bar -->
+    <!-- Top navigation -->
     <div class="top-bar">
-      <h1>Music Subscription App</h1>
+      <div>
+        <h1>Music Subscription App</h1>
+        <p class="top-subtitle">
+          Search, subscribe, and manage your music library.
+        </p>
+      </div>
 
-      <!-- Logout button -->
-      <button onclick="logout()">Logout</button>
+      <button onclick="logout()" class="logout-btn">Logout</button>
     </div>
 
-    <!-- USER AREA -->
+    <!-- Account section -->
     <section>
-      <h2>User Area</h2>
-
-      <!-- Display logged-in username -->
-      <p>Welcome, <span id="username"></span></p>
+      <h2>Account</h2>
+      <p class="section-text">
+        Welcome, <strong><span id="username"></span></strong>
+      </p>
     </section>
 
-    <!-- SUBSCRIPTION AREA -->
+    <!-- Subscription section -->
     <section>
-      <h2>Subscription Area</h2>
+      <div class="section-header">
+        <h2>My Subscriptions</h2>
+        <p class="section-text">
+          Songs you subscribe to will appear here.
+        </p>
+      </div>
 
-      <!-- Subscribed songs will be dynamically inserted here -->
       <div id="subscriptions"></div>
     </section>
 
-    <!-- QUERY AREA -->
+    <!-- Query/Search section -->
     <section>
-      <h2>Query Area</h2>
+      <div class="section-header">
+        <h2>Search Music</h2>
 
-      <!-- Search form -->
-      <div class="form-grid">
-        <input type="text" id="title" placeholder="Title">
-        <input type="text" id="year" placeholder="Year">
-        <input type="text" id="artist" placeholder="Artist">
-        <input type="text" id="album" placeholder="Album">
+        <!-- Help / explanation text -->
+        <p class="section-text">
+          Enter at least one field to search. Multiple fields will be combined.
+          <br>
+          Example: Artist = Kendrick Lamar and Album = Bad Blood.
+        </p>
       </div>
 
-      <!-- Query button -->
-      <button onclick="queryMusic()">Query</button>
+      <!-- Form allows Enter key to trigger search -->
+      <form onsubmit="event.preventDefault(); queryMusic();">
+        <div class="form-grid">
+          <input type="text" id="title" placeholder="Title">
+          <input type="text" id="year" placeholder="Year">
+          <input type="text" id="artist" placeholder="Artist">
+          <input type="text" id="album" placeholder="Album">
+        </div>
 
-      <!-- Query error message -->
+        <button type="submit">Search</button>
+      </form>
+
+      <!-- Error message -->
       <p id="queryMessage" class="error"></p>
 
-      <!-- Query results will appear here -->
+      <!-- Results -->
       <div id="results"></div>
     </section>
 
   </div>
 
-  <!-- Scripts -->
   <script src="config.js"></script>
   <script src="main.js"></script>
 </body>

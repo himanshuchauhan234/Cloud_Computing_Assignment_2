@@ -1,9 +1,7 @@
-/* Applies consistent sizing to all elements */
 * {
   box-sizing: border-box;
 }
 
-/* Overall page styling */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #f3f6fb;
@@ -14,22 +12,37 @@ body {
 /* Login/Register pages */
 .container {
   width: 100%;
-  max-width: 420px;
-  margin: 90px auto;
+  max-width: 430px;
+  margin: 80px auto;
   background: #ffffff;
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 34px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
-/* Login/Register page title */
+.app-badge {
+  display: inline-block;
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
 .container h1 {
-  text-align: center;
-  margin-bottom: 24px;
+  margin: 0 0 8px 0;
   color: #111827;
 }
 
-/* Input labels */
+.subtitle {
+  color: #6b7280;
+  margin-top: 0;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
 label {
   display: block;
   margin-top: 14px;
@@ -37,22 +50,21 @@ label {
   font-weight: bold;
 }
 
-/* Form input fields */
 input {
   width: 100%;
-  padding: 12px;
+  padding: 12px 14px;
   border: 1px solid #d1d5db;
   border-radius: 10px;
   font-size: 15px;
+  background: #ffffff;
 }
 
-/* Highlight input when selected */
 input:focus {
   outline: none;
   border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-/* General button styling */
 button {
   background: #2563eb;
   color: white;
@@ -65,93 +77,104 @@ button {
   font-weight: bold;
 }
 
-/* Button hover state */
 button:hover {
   background: #1d4ed8;
 }
 
-/* Link styling */
 a {
   color: #2563eb;
   text-decoration: none;
+  font-weight: bold;
 }
 
 a:hover {
   text-decoration: underline;
 }
 
-/* Error message text */
+.page-link {
+  margin-top: 20px;
+  color: #4b5563;
+}
+
 .error {
   color: #dc2626;
   margin-top: 12px;
 }
 
-/* Success message text */
 .success {
   color: #15803d;
   margin-top: 12px;
 }
 
-/* Main page container */
+/* Main page */
 .page {
   width: 92%;
   max-width: 1200px;
   margin: 30px auto;
 }
 
-/* Top navigation bar */
 .top-bar {
   background: #ffffff;
-  padding: 18px 24px;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  padding: 22px 26px;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
 }
 
-/* App title in top bar */
 .top-bar h1 {
   margin: 0;
   color: #111827;
 }
 
-/* Logout button */
-.top-bar button {
+.top-subtitle {
+  margin: 6px 0 0 0;
+  color: #6b7280;
+}
+
+.logout-btn {
   margin-top: 0;
   background: #ef4444;
 }
 
-/* Logout hover state */
-.top-bar button:hover {
+.logout-btn:hover {
   background: #dc2626;
 }
 
-/* Main content sections */
 section {
   background: #ffffff;
-  padding: 24px;
+  padding: 26px;
   margin-bottom: 24px;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
 }
 
-/* Section headings */
 section h2 {
   margin-top: 0;
+  margin-bottom: 8px;
   color: #111827;
 }
 
-/* Query input layout */
+.section-header {
+  margin-bottom: 18px;
+}
+
+.section-text {
+  color: #4b5563;
+  margin-top: 0;
+  line-height: 1.5;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
-/* Song cards grid */
+/* Song cards */
 #subscriptions,
 #results {
   display: grid;
@@ -160,28 +183,30 @@ section h2 {
   margin-top: 18px;
 }
 
-/* Individual song card */
 .card {
   border: 1px solid #e5e7eb;
   background: #f9fafb;
   padding: 18px;
-  border-radius: 14px;
+  border-radius: 16px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* Song title */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
 .card h3 {
   margin-top: 0;
   margin-bottom: 10px;
   color: #111827;
 }
 
-/* Song details */
 .card p {
   margin: 6px 0;
   font-size: 14px;
 }
 
-/* Artist image */
 .card img {
   width: 100%;
   height: 160px;
@@ -191,41 +216,34 @@ section h2 {
   background: #e5e7eb;
 }
 
-/* Card buttons */
 .card button {
   width: 100%;
 }
 
-/* Remove buttons in subscription area */
 #subscriptions .card button {
   background: #ef4444;
 }
 
-/* Remove button hover */
 #subscriptions .card button:hover {
   background: #dc2626;
 }
 
-/* Mobile responsive styling */
+/* Mobile responsive */
 @media (max-width: 800px) {
-  /* Stack query inputs on smaller screens */
   .form-grid {
     grid-template-columns: 1fr;
   }
 
-  /* Stack top bar content */
   .top-bar {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
 
-  /* Make logout button full width on mobile */
-  .top-bar button {
+  .logout-btn {
     width: 100%;
   }
 
-  /* Reduce login/register spacing on mobile */
   .container {
     margin: 40px auto;
     width: 90%;

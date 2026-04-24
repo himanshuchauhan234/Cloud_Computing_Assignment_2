@@ -1,8 +1,6 @@
 // =======================
 // MOCK DATA (for testing)
 // =======================
-
-// Fake song list (used when USE_MOCK_DATA = true)
 const mockSongs = [
   {
     artist: "Taylor Swift",
@@ -17,10 +15,16 @@ const mockSongs = [
     year: "1974",
     album: "Living and Dying in 3/4 Time",
     image_url: "https://via.placeholder.com/300x200"
+  },
+  {
+    artist: "Kendrick Lamar",
+    title: "Bad Blood",
+    year: "2015",
+    album: "To Pimp a Butterfly",
+    image_url: "https://via.placeholder.com/300x200"
   }
 ];
 
-// Stores user subscriptions locally in mock mode
 let mockSubscriptions = [];
 
 
@@ -31,7 +35,7 @@ function loadMainPage() {
   const email = sessionStorage.getItem("email");
   const user_name = sessionStorage.getItem("user_name");
 
-  // If not logged in, redirect
+  // Redirect if not logged in
   if (!email) {
     window.location.href = "login.html";
     return;
@@ -40,7 +44,7 @@ function loadMainPage() {
   // Display username
   document.getElementById("username").textContent = user_name || email;
 
-  // Load subscription data
+  // Load subscriptions
   loadSubscriptions();
 }
 
@@ -51,14 +55,12 @@ function loadMainPage() {
 async function logout() {
   const email = sessionStorage.getItem("email");
 
-  // Call backend logout (optional)
+  // Optional backend logout
   if (!USE_MOCK_DATA && email) {
     try {
       await fetch(`${API_BASE_URL}/logout`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email })
       });
     } catch (error) {
@@ -66,7 +68,6 @@ async function logout() {
     }
   }
 
-  // Clear session and redirect
   sessionStorage.clear();
   window.location.href = "login.html";
 }
@@ -78,14 +79,12 @@ async function logout() {
 async function loadSubscriptions() {
   const email = sessionStorage.getItem("email");
 
-  // Mock mode
   if (USE_MOCK_DATA) {
     displaySubscriptions(mockSubscriptions);
     return;
   }
 
   try {
-    // Get subscriptions from backend
     const response = await fetch(
       `${API_BASE_URL}/subscriptions?email=${encodeURIComponent(email)}`
     );
@@ -110,7 +109,6 @@ function displaySubscriptions(subscriptions) {
     return;
   }
 
-  // Create card for each subscription
   subscriptions.forEach(song => {
     const card = document.createElement("div");
     card.className = "card";
@@ -124,7 +122,6 @@ function displaySubscriptions(subscriptions) {
       <button>Remove</button>
     `;
 
-    // Attach remove button event
     card.querySelector("button").addEventListener("click", () => removeSubscription(song));
     container.appendChild(card);
   });
@@ -135,7 +132,6 @@ function displaySubscriptions(subscriptions) {
 // QUERY MUSIC
 // =======================
 async function queryMusic() {
-  // Get search inputs
   const title = document.getElementById("title").value.trim();
   const year = document.getElementById("year").value.trim();
   const artist = document.getElementById("artist").value.trim();
@@ -145,15 +141,13 @@ async function queryMusic() {
   message.textContent = "";
   document.getElementById("results").innerHTML = "";
 
-  // Validation
+  // Validate input
   if (!title && !year && !artist && !album) {
     message.textContent = "At least one field must be completed";
     return;
   }
 
-  // =======================
   // MOCK MODE
-  // =======================
   if (USE_MOCK_DATA) {
     const results = mockSongs.filter(song => {
       return (
@@ -168,9 +162,7 @@ async function queryMusic() {
     return;
   }
 
-  // =======================
   // REAL BACKEND
-  // =======================
   try {
     const params = new URLSearchParams();
 
@@ -229,7 +221,6 @@ function displayResults(songs) {
 async function subscribe(song) {
   const email = sessionStorage.getItem("email");
 
-  // Mock mode
   if (USE_MOCK_DATA) {
     mockSubscriptions.push(song);
     displaySubscriptions(mockSubscriptions);
@@ -239,9 +230,7 @@ async function subscribe(song) {
   try {
     await fetch(`${API_BASE_URL}/subscriptions`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email,
         artist: song.artist,
@@ -265,7 +254,6 @@ async function subscribe(song) {
 async function removeSubscription(song) {
   const email = sessionStorage.getItem("email");
 
-  // Mock mode
   if (USE_MOCK_DATA) {
     mockSubscriptions = mockSubscriptions.filter(item =>
       !(item.title === song.title &&
@@ -280,9 +268,7 @@ async function removeSubscription(song) {
   try {
     await fetch(`${API_BASE_URL}/subscriptions`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email,
         artist: song.artist,

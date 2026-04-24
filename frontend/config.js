@@ -1,8 +1,8 @@
-// Base URL for backend (Flask / API Gateway / EC2 / ECS)
-// Change this later when backend is ready
+// Base URL for backend API (Flask / EC2 / ECS / Lambda)
+// Change this when backend is ready
 const API_BASE_URL = "http://localhost:5000";
 
-// Toggle for testing without backend
-// true = use fake/mock data
-// false = connect to real backend
+// Toggle between mock mode and real backend
+// true = use fake data (for testing frontend only)
+// false = use real backend APIs
 const USE_MOCK_DATA = true;
