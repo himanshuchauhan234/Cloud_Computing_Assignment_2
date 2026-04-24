@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Registration container -->
+  <div class="container">
+
+    <!-- Page title -->
+    <h1>Register</h1>
+
+    <!-- Email input -->
+    <label>Email</label>
+    <input type="email" id="email">
+
+    <!-- Username input -->
+    <label>Username</label>
+    <input type="text" id="username">
+
+    <!-- Password input -->
+    <label>Password</label>
+    <input type="password" id="password">
+
+    <!-- Register button -->
+    <button onclick="register()">Register</button>
+
+    <!-- Error message -->
+    <p id="message" class="error"></p>
+
+    <!-- Link back to login -->
+    <p>
+      Already have an account?
+      <a href="login.html">Login here</a>
+    </p>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>
